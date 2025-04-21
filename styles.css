@@ -62,4 +62,58 @@ body {
   .hidden {
     display: none;
   }
+
+
+  /* === HOME PAGE STYLES === */
+
+.home-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .navbar button {
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  
+  .quiz-item {
+    padding: 15px;
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .quiz-item:hover {
+    background-color: #bbdefb;
+  }
   
