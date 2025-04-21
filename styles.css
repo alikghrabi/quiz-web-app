@@ -63,6 +63,15 @@ body {
     display: none;
   }
 
+  .auth-tabs button.active {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .auth-form.hidden {
+    display: none;
+  }
+  
 
   /* === HOME PAGE STYLES === */
 
@@ -162,5 +171,67 @@ body {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
+  }
+  
+  /* === DASHBOARD PAGE STYLES === */
+
+.dashboard-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .users-list {
+    margin-top: 20px;
+  }
+  
+  .user-card {
+    padding: 15px;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #f1f8e9;
+  }
+  
+  .user-card h4 {
+    margin: 0 0 8px;
+  }
+  
+  .user-card ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .user-card li {
+    margin-bottom: 6px;
+  }
+  
+  .dashboard-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  th {
+    background-color: #2196f3;
+    color: white;
   }
   

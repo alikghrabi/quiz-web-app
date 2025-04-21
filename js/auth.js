@@ -1,56 +1,86 @@
+// Tab logic
 const loginTab = document.getElementById("loginTab");
 const registerTab = document.getElementById("registerTab");
+const adminTab = document.getElementById("adminTab");
+
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
+const adminForm = document.getElementById("adminForm");
 
-loginTab.addEventListener("click", () => {
+loginTab.onclick = () => {
   loginTab.classList.add("active");
   registerTab.classList.remove("active");
+  adminTab.classList.remove("active");
   loginForm.classList.remove("hidden");
   registerForm.classList.add("hidden");
-});
+  adminForm.classList.add("hidden");
+};
 
-registerTab.addEventListener("click", () => {
-  registerTab.classList.add("active");
+registerTab.onclick = () => {
   loginTab.classList.remove("active");
-  registerForm.classList.remove("hidden");
+  registerTab.classList.add("active");
+  adminTab.classList.remove("active");
   loginForm.classList.add("hidden");
-});
+  registerForm.classList.remove("hidden");
+  adminForm.classList.add("hidden");
+};
 
-function handleRegister() {
-  const name = document.getElementById("registerName").value.trim();
-  const email = document.getElementById("registerEmail").value.trim();
-  const password = document.getElementById("registerPassword").value.trim();
+adminTab.onclick = () => {
+  loginTab.classList.remove("active");
+  registerTab.classList.remove("active");
+  adminTab.classList.add("active");
+  loginForm.classList.add("hidden");
+  registerForm.classList.add("hidden");
+  adminForm.classList.remove("hidden");
+};
 
-  if (!name || !email || !password) return alert("All fields required.");
-
+// Login as user
+function handleLogin() {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  const existingUser = users.find(user => user.email === email);
-  if (existingUser) return alert("Email already registered.");
-
-  users.push({ name, email, password, scores: [] });
-  localStorage.setItem("users", JSON.stringify(users));
-  alert("Registration successful! Please login.");
-  loginTab.click();
+  const user = users.find(u => u.email === email && u.password === password);
+  if (user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid login credentials");
+  }
 }
 
-function handleLogin() {
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
-
-  if (!email || !password) return alert("All fields required.");
-
-  if (email === "admin@quiz.com" && password === "admin123") {
-    localStorage.setItem("currentUser", JSON.stringify({ name: "Admin", email }));
-    return window.location.href = "dashboard.html";
-  }
+// Register new user
+function handleRegister() {
+  const name = document.getElementById("registerName").value;
+  const email = document.getElementById("registerEmail").value;
+  const password = document.getElementById("registerPassword").value;
 
   const users = JSON.parse(localStorage.getItem("users")) || [];
-  const user = users.find(user => user.email === email && user.password === password);
 
-  if (!user) return alert("Invalid credentials.");
+  if (users.some(u => u.email === email)) {
+    alert("User already exists");
+    return;
+  }
 
-  localStorage.setItem("currentUser", JSON.stringify(user));
-  window.location.href = "home.html";
+  const newUser = { name, email, password, scores: [] };
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("Registration successful!");
+  registerTab.classList.remove("active");
+  loginTab.classList.add("active");
+  registerForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+}
+
+// Admin login
+function handleAdminLogin() {
+  const email = document.getElementById("adminEmail").value;
+  const password = document.getElementById("adminPassword").value;
+
+  if (email === "alikghrabi@gmail.com" && password === "12321") {
+    localStorage.setItem("isAdmin", "true");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid admin credentials");
+  }
 }

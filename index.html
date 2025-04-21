@@ -11,8 +11,10 @@
     <div class="auth-tabs">
       <button id="loginTab" class="active">Login</button>
       <button id="registerTab">Register</button>
+      <button id="adminTab">Admin</button>
     </div>
 
+    <!-- Login Form -->
     <div class="auth-form" id="loginForm">
       <h2>Login</h2>
       <input type="email" id="loginEmail" placeholder="Email" required />
@@ -20,12 +22,21 @@
       <button onclick="handleLogin()">Login</button>
     </div>
 
+    <!-- Register Form -->
     <div class="auth-form hidden" id="registerForm">
       <h2>Register</h2>
       <input type="text" id="registerName" placeholder="Name" required />
       <input type="email" id="registerEmail" placeholder="Email" required />
       <input type="password" id="registerPassword" placeholder="Password" required />
       <button onclick="handleRegister()">Register</button>
+    </div>
+
+    <!-- Admin Login Form -->
+    <div class="auth-form hidden" id="adminForm">
+      <h2>Admin Login</h2>
+      <input type="email" id="adminEmail" placeholder="Admin Email" required />
+      <input type="password" id="adminPassword" placeholder="Password" required />
+      <button onclick="handleAdminLogin()">Login as Admin</button>
     </div>
   </div>
 
